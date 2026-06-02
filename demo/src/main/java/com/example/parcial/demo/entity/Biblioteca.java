@@ -1,6 +1,7 @@
 package com.example.parcial.demo.entity;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,9 +15,10 @@ public class Biblioteca {
     private String telefono;
     private String responsable;
 
-    @OneToMany(mappedBy = "biblioteca", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "biblioteca_id")
     @JsonIgnore
-    private List<Libro> libros;
+    private List<Libro> libros = new ArrayList<>();
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

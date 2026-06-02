@@ -11,9 +11,8 @@ public class Libro {
     private String autor;
     private String categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "biblioteca_id")
-    private Biblioteca biblioteca;
+    @Column(name = "biblioteca_id", nullable = false)
+    private Long bibliotecaId;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -23,6 +22,6 @@ public class Libro {
     public void setAutor(String autor) { this.autor = autor; }
     public String getCategoria() { return categoria; }
     public void setCategoria(String categoria) { this.categoria = categoria; }
-    public Biblioteca getBiblioteca() { return biblioteca; }
-    public void setBiblioteca(Biblioteca biblioteca) { this.biblioteca = biblioteca; }
+    public Long getBibliotecaId() { return bibliotecaId; }
+    public void setBibliotecaId(Long bibliotecaId) { this.bibliotecaId = bibliotecaId; }
 }
